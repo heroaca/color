@@ -112,7 +112,8 @@ button:focus {
 }
 
 .codrops-header h1 span {
-	color: #585558;
+	/*color: #585558;*/
+	color: #868686;
 }
 
 .codrops-links {
@@ -434,7 +435,8 @@ button:focus {
 
 .stack-title a span {
 	display: block;
-	color: #595959;
+	/*color: #595959;*/
+	color: #868686;
 	cursor: pointer;
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
