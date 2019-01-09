@@ -40,7 +40,8 @@
 
 /* General styles */
 body {
-	background: #212121;
+	/*background: #212121;*/
+	background: #001114;
 	color: #fff;
 	font-size: 1em;
 	overflow: hidden;
@@ -53,6 +54,7 @@ body {
 
 a {
 	color: #585558;
+	opacity: .8;
 	text-decoration: none;
 	outline: none;
 }
@@ -83,6 +85,11 @@ button:focus {
 	-moz-flex-direction: column;
 	-ms-flex-direction: column;
 	flex-direction: column;
+}
+
+#c {
+	position: absolute;
+	z-index: -100;
 }
 
 /* Header */
@@ -190,7 +197,7 @@ button:focus {
 }
 
 .hero > div {
-	background: #212121 url(../images/bg.jpg) no-repeat 50% 0;
+	background: url(../images/bg.png) no-repeat 50% 0;
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 }
