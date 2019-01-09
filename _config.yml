@@ -2,29 +2,16 @@ baseurl: "/color"
 url: ""
 
 collections:
-  vigilantes:
+  artists:
     output: true
-    permalink: /:collection/:name
-
-  mha:
-    output: true
-    permalink: /:name
-
-  volume:
-    output: true
-    permalink: /:collection/:name
+    permalink: /:title
 
 defaults:
   - scope:
       path: ""
-      type: "vigilantes"
+      type: "artists"
     values:
-      layout: "manga"
-  - scope:
-      path: ""
-      type: "mha"
-    values:
-      layout: "manga"
+      layout: "artist"
   - scope:
       path: ""
     values:

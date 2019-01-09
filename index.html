@@ -1,85 +1,50 @@
 ---
-title: My Hero Academia Color Pages
+layout: default
+title: MHA Color Pages
 ---
-<link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="assets/css/imageRevealHover.css">
-<style type="text/css">
-/* General styles */
+	<div class="container">
+		<div class="hero">
+			<div class="hero__back hero__back--static"></div>
+			<div class="hero__back hero__back--mover"></div>
+			<div class="hero__front"></div>
+		</div>
+		<header class="codrops-header">
+			<h1 class="codrops-title">My Hero Academia <span>Color Pages</span></h1>
+		</header>
+		<div class="stack-slider">
+			<div class="stacks-wrapper">
+				{% for artist in site.artists %}
 
-body {
-	color: #fff;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
+				<div class="stack">
+					<h2 class="stack-title"><a href="#" data-text="{{ artist.name }}"><span>{{ artist.name }}<br/><span style="font-size: 18pt;">{{ artist.position}}</span></span></a></h2>
 
-.block__link_title {
-	font-size: 1em;
-	font-weight: bold;
-}
+					{% assign filtered_posts = site.posts | where: 'artist', artist.slug %}
+					{% for post in filtered_posts %}
+					<div class="item">
+						<div class="item__content">
+							<img src="assets/images/blank.jpg" alt="{{ post.title }}"  data-echo="assets/mha/{{ post.image }}.jpg"/>
+							<!-- <h3 class="item__title">{{ post.content }} <span class="item__date">{{ post.date | date_to_string }}</span></h3> -->
+							<div class="item__details">
+								<ul>
+									<li><i class="icon icon-camera"></i><span>{{ post.date | date_to_string }}</span></li>
+									<li><i class="icon icon-aperture"></i><span><a href="assets/mha/{{ post.image }}.jpg" target="_blank">Original</a></span></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+					{% endfor %}
+				</div>
 
-.block__link_subtitle {
-	font-size: 1.3em;
-}
-
-.arrow-key {
-	width: 35px;
-	height: 35px;
-	border: 1px solid #a9a9a9;
-	border-radius: 2px 2px 2px 2px;
-	-moz-border-radius: 2px 2px 2px 2px;
-	-webkit-border-radius: 2px 2px 2px 2px;
-	font-size: 16px;
-	-moz-box-sizing: border-box !important;
-	-webkit-box-sizing: border-box !important;
-	box-sizing: border-box !important;
-	text-align: center;
-	padding: 6px 11px 9px 11px;
-	color: #7c7c7c;
-	-webkit-box-shadow: 0px 3px 0px -2px rgba(255,255,255,1), 0px 2px 0px 0px rgba(169,169,169,1);
-	-moz-box-shadow: 0px 3px 0px -2px rgba(255,255,255,1), 0px 2px 0px 0px rgba(169,169,169,1);
-	box-shadow: 0px 3px 0px -2px rgba(255,255,255,1), 0px 2px 0px 0px rgba(169,169,169,1);
-	cursor: pointer;
-}
-
-.up-down-keys {
-	padding: 8px 15px;
-}
-
-.instruction-text {
-	padding: 0 30px 0 15px;
-}
-
-</style>
-<div class="container loading">
-</br><h1>My Hero Academia Color Pages</h1></br>
-
-<div class="instructions">
-	<span class="arrow-key">&larr;</span> <span class="arrow-key up">&rarr;</span>
-	<span class="instruction-text"> Next/Prev Page</span>
-
-	<span class="arrow-key up-down-keys">&uarr;</span> <span class="arrow-key up-down-keys">&darr;</span>
-	<span class="instruction-text"> Prev/Next Chapter</span>
-</div>
-
-<div class="content"><div class="block" data-fx="1">
-	{% for chapter in site.mha %}
-
-	{% assign filename = chapter.relative_path | replace: chapter.collection, '' | replace: '/', ''  | replace: '_', '' | replace: '.md', '' %}
-
-	{% capture firstchar %}{{ filename | slice: 0 }}{% endcapture %}
-	
-	{% if firstchar == '0' %}
-	{% assign filename = filename | replace_first: '0', '' %}
-	{% endif %}
-
-	<a class="block__link" href="{{ chapter.url }}" target="_blank" data-img="assets/{{chapter.collection}}-thumb/{{filename}}.jpg"><span class="block__link_title">CHAPTER {{ filename }}</span></br><span class="block__link_subtitle">{{ chapter.name }}</span></a>
-
-	{% endfor %}
-</div>
-</div>
-
-<script src="assets/js/charming.min.js"></script>
-<script src="assets/js/imagesloaded.pkgd.min.js"></script>
-<script src="assets/js/TweenMax.min.js"></script>
-<script src="assets/js/imageRevealHover.js"></script>
+				{% endfor %}
+			</div>
+			<!-- /stacks-wrapper -->
+		</div>
+		<!-- /stacks -->
+		<img class="loader" src="assets/images/three-dots.svg" width="60" alt="Loader image" />
+	</div>
+	<!-- /container -->
+	<!-- Flickity v1.0.0 http://flickity.metafizzy.co/ -->
+	<script src="assets/js/flickity.pkgd.min.js"></script>
+	<script src="assets/js/smoothscroll.js"></script>
+	<script src="assets/js/main.js"></script>
